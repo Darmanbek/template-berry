@@ -1,0 +1,14 @@
+.menu
+{
+	height: calc(100vh - 80px);
+	padding-inline: 16px;
+	transition: all 0.2s linear;
+	overflow: hidden;
+
+	&:hover
+	{
+		overflow-y: auto;
+		overflow-x: hidden;
+		scrollbar-width: thin;
+	}
+}

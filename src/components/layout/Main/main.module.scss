@@ -1,0 +1,19 @@
+@import "/src/assets/styles/variables";
+@import "/src/assets/styles/mixin";
+
+.main
+{
+	transition: all 0.2s linear;
+	padding: 20px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border-radius: $primary-border-radius $primary-border-radius 0 0;
+	background-color: $primary-bg;
+	margin-right: 20px;
+	flex-grow: 1;
+
+	@include md
+	{
+		margin-inline: 20px;
+	}
+}

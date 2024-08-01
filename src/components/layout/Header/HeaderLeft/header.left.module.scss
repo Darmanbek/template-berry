@@ -1,0 +1,38 @@
+@import "src/assets/styles/mixin";
+
+.left
+{
+
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	flex-grow: 1;
+
+
+	.logo
+	{
+		display: flex;
+		align-items: center;
+		flex-basis: 228px;
+
+		h1
+		{
+			font-size: 1.35rem;
+			flex-grow: 1;
+		}
+	}
+
+	.search
+	{
+		flex-basis: 435px;
+		flex-grow: 1;
+		max-width: 435px;
+
+		@include media(900)
+		{
+			flex-basis: 250px;
+			flex-grow: 1;
+			max-width: 250px;
+		}
+	}
+}

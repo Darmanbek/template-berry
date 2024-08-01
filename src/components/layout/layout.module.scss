@@ -1,0 +1,13 @@
+.layout
+{
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	.layout-has-menu
+	{
+		height: calc(100vh - 80px);
+		display: flex;
+		flex-grow: 1;
+	}
+}
