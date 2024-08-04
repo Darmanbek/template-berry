@@ -4,9 +4,14 @@ import { FC } from "react";
 
 const UiSider: FC<SiderProps> = (props) => {
 	return (
-		<ConfigProvider>
+		<ConfigProvider
+		>
 			<Sider
 				width={260}
+				style={{
+					transition: "all .2s",
+					transformOrigin: "left",
+				}}
 				{...props}
 			/>
 		</ConfigProvider>

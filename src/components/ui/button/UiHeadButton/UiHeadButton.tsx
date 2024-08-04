@@ -7,12 +7,17 @@ interface StyledUiHeadButtonProps {
 	colorPrimaryBg: string;
 }
 
-const StyledUiHeadButton = styled(Button)<StyledUiHeadButtonProps>`
+const StyledUiHeadButton = styled(Button).withConfig({
+	shouldForwardProp: prop => !["colorPrimary", "colorPrimaryBg"].includes(prop)
+})<StyledUiHeadButtonProps>`
 	color: ${(props) => props.colorPrimary};
 	background-color: ${(props) => props.colorPrimaryBg};
-  &:hover {
-    color: #fff;
-  };
+
+	&:hover
+	{
+		color: #fff;
+	}
+;
 `;
 
 const UiHeadButton: FC<ButtonProps> = (props) => {
@@ -32,7 +37,8 @@ const UiHeadButton: FC<ButtonProps> = (props) => {
 		<ConfigProvider
 			theme={{
 				token: {
-					colorPrimary: color || token.colorPrimary
+					colorPrimary: color || token.colorPrimary,
+					borderRadius: token.borderRadiusLG
 				}
 			}}
 		>

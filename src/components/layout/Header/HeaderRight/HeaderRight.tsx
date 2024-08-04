@@ -8,19 +8,24 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Popover } from "antd";
 import { FC, useState } from "react";
-import { Profile } from "./Profile/Profile";
+import screenfull from "screenfull";
 import { UiHeadButton, UiHeadProfileButton } from "src/components/ui";
+import { useResponsive } from "src/hooks";
 import styles from "./header.right.module.scss";
 
+import { Profile } from "./Profile/Profile";
+
 const HeaderRight: FC = () => {
+	const { isMobile } = useResponsive(768);
 	const [fullScreen, setFullScreen] = useState(false);
 
 	return (
 		<div className={styles.right}>
-			<UiHeadButton
-				icon={<WifiOutlined />}
-
-			/>
+			{!isMobile && (
+				<UiHeadButton
+					icon={<WifiOutlined />}
+				/>
+			)}
 			<UiHeadButton
 				icon={<GlobalOutlined />}
 				color={"rgb(103, 58, 183)"}
@@ -28,12 +33,17 @@ const HeaderRight: FC = () => {
 			<UiHeadButton
 				icon={<BellOutlined />}
 			/>
-			<UiHeadButton
-				onClick={() => setFullScreen(prev => !prev)}
-				icon={fullScreen ? <FullscreenExitOutlined style={{ fontSize: 20 }} /> :
-					<FullscreenOutlined style={{ fontSize: 20 }} />}
-				color={"rgb(103, 58, 183)"}
-			/>
+			{!isMobile && (
+				<UiHeadButton
+					onClick={() => {
+						screenfull.toggle();
+						setFullScreen(!screenfull.isFullscreen);
+					}}
+					icon={fullScreen ? <FullscreenExitOutlined style={{ fontSize: 20 }} /> :
+						<FullscreenOutlined style={{ fontSize: 20 }} />}
+					color={"rgb(103, 58, 183)"}
+				/>
+			)}
 			<Popover
 				trigger={"click"}
 				placement={"bottomRight"}

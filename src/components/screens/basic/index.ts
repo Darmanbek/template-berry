@@ -1,8 +1,8 @@
 import loadable from "@loadable/component";
 import { createElement } from "react";
-import { Loader } from "src/components/shared/Loader/Loader";
+import { Loader } from "src/components/shared";
 
-export * from "./login/Login";
+export * from "./auth";
 export * from "./not-found/NotFound";
 
 export const Home = loadable(() => import("./home/Home"), {

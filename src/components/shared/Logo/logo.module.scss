@@ -1,0 +1,14 @@
+.logo
+{
+	display: flex;
+	align-items: center;
+	flex-basis: 228px;
+	gap: 8px;
+
+	h1
+	{
+		font-size: 1.35rem;
+		flex-grow: 1;
+		white-space: nowrap;
+	}
+}

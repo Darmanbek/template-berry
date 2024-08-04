@@ -2,8 +2,14 @@
 {
 	height: calc(100vh - 80px);
 	padding-inline: 16px;
-	transition: all 0.2s linear;
+	transition: all 0.2s;
+	transform-origin: left;
 	overflow: hidden;
+
+	&.collapsed
+	{
+		padding-inline: 0;
+	}
 
 	&:hover
 	{

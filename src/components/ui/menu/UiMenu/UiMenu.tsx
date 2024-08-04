@@ -3,23 +3,22 @@ import { FC } from "react";
 
 const UiMenu: FC<MenuProps> = (props) => {
 
-	const colors = theme.getDesignToken({
-		components: {
-			Menu: {}
-		}
-	});
-	console.log(colors);
+	const { token } = theme.useToken();
+	// const colors = theme.getDesignToken();
 	return (
 		<ConfigProvider
 			theme={{
 				components: {
-					Menu: {}
+					Menu: {
+						itemHoverBg: token.colorPrimaryBg,
+						subMenuItemBg: token.colorWhite,
+					}
 				}
 			}}
 		>
 			<Menu
 				style={{
-					borderRight: 0
+					borderRight: 0,
 				}}
 				{...props}
 			/>

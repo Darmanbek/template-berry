@@ -1,17 +1,30 @@
-import { LogoutOutlined, SettingOutlined } from "@ant-design/icons";
-import { FC } from "react";
+import { LoadingOutlined, LogoutOutlined, SettingOutlined } from "@ant-design/icons";
+import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UiDivider, UiMenu, UiSearchInput } from "src/components/ui";
+import { useNotification } from "src/hooks";
+import { sleep } from "src/utils";
 import styles from "./profile.module.scss";
 
 const Profile: FC = () => {
 	const navigate = useNavigate();
+	const { notification } = useNotification();
+	const [isLoading, setIsLoading] = useState(false);
 
 	const handleNavigate = (key: string) => {
 		if (key === "/logout") {
+			setIsLoading(true);
 			console.log("Logout");
+			sleep(() => {
+				notification.success({
+					message: "Success!",
+					placement: "top"
+				});
+				navigate("/login");
+			});
+		} else {
+			navigate(key);
 		}
-		navigate(key);
 	};
 
 	return (
@@ -35,7 +48,8 @@ const Profile: FC = () => {
 					{
 						key: "/logout",
 						label: "Logout",
-						icon: <LogoutOutlined />
+						disabled: isLoading,
+						icon: isLoading ? <LoadingOutlined spin={true} /> : <LogoutOutlined />
 					}
 				]}
 			/>

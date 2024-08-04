@@ -8,13 +8,18 @@ interface StyledUiHeadProfileButtonProps {
 	colorPrimaryBg: string;
 }
 
-const StyledUiHeadProfileButton = styled(Button)<StyledUiHeadProfileButtonProps>`
+const StyledUiHeadProfileButton = styled(Button).withConfig({
+	shouldForwardProp: prop => !["colorPrimary", "colorPrimaryBg"].includes(prop)
+})<StyledUiHeadProfileButtonProps>`
 	color: ${(props) => props.colorPrimary};
 	background-color: ${(props) => props.colorPrimaryBg};
-  height: auto;
-  &:hover {
-    color: #fff;
-  };
+	height: auto;
+
+	&:hover
+	{
+		color: #fff;
+	}
+;
 `;
 
 const UiHeadProfileButton: FC<ButtonProps> = (props) => {
@@ -31,7 +36,6 @@ const UiHeadProfileButton: FC<ButtonProps> = (props) => {
 			colorPrimary: color || token.colorPrimary
 		}
 	});
-	console.log(token.colorPrimary);
 
 	return (
 		<ConfigProvider

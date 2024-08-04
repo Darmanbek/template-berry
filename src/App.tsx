@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { App as AntdApp } from "antd";
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "src/components/layout";
 import { Login } from "src/components/screens";
@@ -17,4 +18,8 @@ const App: FC = () => {
 	);
 };
 
-export { App };
+export default () => (
+	<AntdApp>
+		<App />
+	</AntdApp>
+);
