@@ -6,12 +6,11 @@ import {
 	UserOutlined,
 	WifiOutlined
 } from "@ant-design/icons";
-import { Avatar, Popover } from "antd";
+import { Avatar, Flex, Popover, Tooltip } from "antd";
 import { FC, useState } from "react";
 import screenfull from "screenfull";
 import { UiHeadButton, UiHeadProfileButton } from "src/components/ui";
 import { useResponsive } from "src/hooks";
-import styles from "./header.right.module.scss";
 
 import { Profile } from "./Profile/Profile";
 
@@ -20,29 +19,31 @@ const HeaderRight: FC = () => {
 	const [fullScreen, setFullScreen] = useState(false);
 
 	return (
-		<div className={styles.right}>
+		<Flex gap={16} align={"center"}>
 			{!isMobile && (
 				<UiHeadButton
 					icon={<WifiOutlined />}
+					color={"#1677FF"}
 				/>
 			)}
 			<UiHeadButton
 				icon={<GlobalOutlined />}
-				color={"rgb(103, 58, 183)"}
 			/>
 			<UiHeadButton
 				icon={<BellOutlined />}
+				color={"#1677FF"}
 			/>
 			{!isMobile && (
-				<UiHeadButton
-					onClick={() => {
-						screenfull.toggle();
-						setFullScreen(!screenfull.isFullscreen);
-					}}
-					icon={fullScreen ? <FullscreenExitOutlined style={{ fontSize: 20 }} /> :
-						<FullscreenOutlined style={{ fontSize: 20 }} />}
-					color={"rgb(103, 58, 183)"}
-				/>
+				<Tooltip title={"Fullscreen"}>
+					<UiHeadButton
+						onClick={() => {
+							screenfull.toggle();
+							setFullScreen(!screenfull.isFullscreen);
+						}}
+						icon={fullScreen ? <FullscreenExitOutlined style={{ fontSize: 20 }} /> :
+							<FullscreenOutlined style={{ fontSize: 20 }} />}
+					/>
+				</Tooltip>
 			)}
 			<Popover
 				trigger={"click"}
@@ -58,7 +59,7 @@ const HeaderRight: FC = () => {
 					/>
 				</UiHeadProfileButton>
 			</Popover>
-		</div>
+		</Flex>
 	);
 };
 

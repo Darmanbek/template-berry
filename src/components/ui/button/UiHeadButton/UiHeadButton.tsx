@@ -13,23 +13,31 @@ const StyledUiHeadButton = styled(Button).withConfig({
 	color: ${(props) => props.colorPrimary};
 	background-color: ${(props) => props.colorPrimaryBg};
 
-	&:hover
-	{
+	&:hover {
 		color: #fff;
 	}
 ;
 `;
 
 const UiHeadButton: FC<ButtonProps> = (props) => {
+	const isDark = false;
+
 	const {
 		color,
 		...rest
 	} = props;
 
 	const { token } = theme.useToken();
+	const colorToken = theme.getDesignToken({
+		token: {
+			colorPrimary: color || token.colorPrimary,
+		}
+	});
 	const customToken = theme.getDesignToken({
 		token: {
-			colorPrimary: color || token.colorPrimary
+			...token,
+			colorPrimary: color || token.colorPrimary,
+			colorPrimaryBg: isDark ? token.colorPrimaryBg : color ? colorToken.colorPrimaryBg : token.colorPrimaryBg
 		}
 	});
 

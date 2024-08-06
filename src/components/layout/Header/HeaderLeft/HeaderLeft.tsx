@@ -5,7 +5,8 @@ import { Logo } from "src/components/shared";
 import { UiHeadButton, UiSearchInput } from "src/components/ui";
 import { useResponsive } from "src/hooks";
 import { useMenuStore } from "src/store";
-import styles from "./header.left.module.scss";
+
+import { StyledSearchDiv } from "./header.left.styles";
 
 const HeaderLeft: FC = () => {
 	const { isMobile } = useResponsive(768);
@@ -33,7 +34,7 @@ const HeaderLeft: FC = () => {
 					/>
 				</div>
 			) : (
-				<div className={styles.search}>
+				<StyledSearchDiv>
 					<UiSearchInput
 						suffix={
 							<UiHeadButton
@@ -42,7 +43,7 @@ const HeaderLeft: FC = () => {
 							/>
 						}
 					/>
-				</div>
+				</StyledSearchDiv>
 			)}
 		</Flex>
 

@@ -1,15 +1,19 @@
 import { LoadingOutlined, LogoutOutlined, SettingOutlined } from "@ant-design/icons";
+import { theme } from "antd";
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UiDivider, UiMenu, UiSearchInput } from "src/components/ui";
 import { useNotification } from "src/hooks";
 import { sleep } from "src/utils";
-import styles from "./profile.module.scss";
+
+import { StyledProfile, StyledProfileHead, StyledSubTitle, StyledTitle } from "./profile.styles";
 
 const Profile: FC = () => {
 	const navigate = useNavigate();
 	const { notification } = useNotification();
 	const [isLoading, setIsLoading] = useState(false);
+
+	const { token } = theme.useToken();
 
 	const handleNavigate = (key: string) => {
 		if (key === "/logout") {
@@ -28,11 +32,20 @@ const Profile: FC = () => {
 	};
 
 	return (
-		<div className={styles.profile}>
-			<div className={styles.head}>
-				<h4 className={styles.title}><span>Good Morning,</span> JWT User</h4>
-				<p className={styles.subtitle}>Project Admin</p>
-			</div>
+		<StyledProfile>
+			<StyledProfileHead>
+				<StyledTitle
+					level={4}
+					style={{
+						fontSize: token.fontSizeHeading5,
+						marginBottom: 0,
+						fontWeight: 400
+					}}
+				>
+					<span>Good Morning,</span> JWT User
+				</StyledTitle>
+				<StyledSubTitle color={token.colorTextTertiary}>Project Admin</StyledSubTitle>
+			</StyledProfileHead>
 			<UiSearchInput
 				placeholder={"Search profile options"}
 			/>
@@ -53,7 +66,7 @@ const Profile: FC = () => {
 					}
 				]}
 			/>
-		</div>
+		</StyledProfile>
 	);
 };
 

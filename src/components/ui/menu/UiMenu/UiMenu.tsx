@@ -11,7 +11,7 @@ const UiMenu: FC<MenuProps> = (props) => {
 				components: {
 					Menu: {
 						itemHoverBg: token.colorPrimaryBg,
-						subMenuItemBg: token.colorWhite,
+						subMenuItemBg: "transparent",
 					}
 				}
 			}}

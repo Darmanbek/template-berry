@@ -11,4 +11,14 @@
 		flex-grow: 1;
 		white-space: nowrap;
 	}
+
+	&.large
+	{
+		h1
+		{
+			font-size: 2rem;
+			flex-grow: 1;
+			white-space: nowrap;
+		}
+	}
 }

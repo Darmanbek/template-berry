@@ -33,6 +33,7 @@ const UiHeadProfileButton: FC<ButtonProps> = (props) => {
 	// const buttonToken = theme.useToken();
 	const customToken = theme.getDesignToken({
 		token: {
+			...token,
 			colorPrimary: color || token.colorPrimary
 		}
 	});

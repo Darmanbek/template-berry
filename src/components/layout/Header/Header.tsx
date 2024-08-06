@@ -1,14 +1,17 @@
+import { theme } from "antd";
 import { FC } from "react";
+import { StyledHeader } from "src/components/layout/Header/header.styles";
 import { HeaderLeft } from "./HeaderLeft/HeaderLeft";
 import { HeaderRight } from "./HeaderRight/HeaderRight";
-import styles from "./header.module.scss";
 
 const Header: FC = () => {
+	const { token } = theme.useToken();
+
 	return (
-		<header className={styles.header}>
+		<StyledHeader backgroundColor={token.colorBgContainer}>
 			<HeaderLeft />
 			<HeaderRight />
-		</header>
+		</StyledHeader>
 	);
 };
 

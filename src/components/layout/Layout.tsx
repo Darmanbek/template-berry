@@ -1,21 +1,24 @@
+import { theme } from "antd";
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "./Header/Header";
-import { NavMenu } from "src/components/layout/NavMenu/NavMenu";
+import { NavMenu } from "./NavMenu/NavMenu";
 import { Main } from "./Main/Main";
-import styles from "./layout.module.scss";
+import { StyledLayout, StyledLayoutHasMenu } from "./layout.styles";
 
 const Layout: FC = () => {
+	const { token } = theme.useToken();
+
 	return (
-		<section className={styles.layout}>
+		<StyledLayout backgroundColor={token.colorBgContainer}>
 			<Header />
-			<div className={styles["layout-has-menu"]}>
+			<StyledLayoutHasMenu>
 				<NavMenu />
 				<Main>
 					<Outlet />
 				</Main>
-			</div>
-		</section>
+			</StyledLayoutHasMenu>
+		</StyledLayout>
 	);
 };
 

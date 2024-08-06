@@ -1,22 +1,36 @@
 import { FC } from "react";
+import { Logo } from "src/components/shared";
 import { UiDrawer, UiSider } from "src/components/ui";
 import { useMenuStore } from "src/store";
 import { Menu } from "./Menu";
 import { useResponsive } from "src/hooks";
-import styles from "./menu.module.scss";
 
 const NavMenu: FC = () => {
 	const { isMobile } = useResponsive(768);
-	const { collapsed, open } = useMenuStore();
+	const { collapsed, open, toggleOpen } = useMenuStore();
 
 	if (isMobile) return (
-		<UiDrawer open={open}>
+		<UiDrawer
+			open={open}
+			onClose={toggleOpen}
+			title={<Logo />}
+			styles={{
+				body: {
+					padding: 0,
+					overflow: "hidden",
+					scrollbarWidth: "thin",
+				},
+				header: {
+					minHeight: 80
+				},
+			}}
+		>
 			<Menu />
 		</UiDrawer>
 	);
 
 	return (
-		<UiSider className={styles.sider} collapsed={collapsed}>
+		<UiSider collapsed={collapsed}>
 			<Menu />
 		</UiSider>
 	);

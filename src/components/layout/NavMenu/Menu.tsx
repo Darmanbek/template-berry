@@ -1,16 +1,17 @@
-import { MenuProps } from "antd";
+import { MenuProps, theme } from "antd";
 import { FC } from "react";
-import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
 import { useMenuStore } from "src/store";
 import { menuRoutes } from "./menuRoutes";
 import { UiMenu } from "src/components/ui";
-import styles from "./menu.module.scss";
+import { StyledMenu } from "./menu.styles";
 
 const Menu: FC = () => {
 	const navigate = useNavigate();
 	const { collapsed } = useMenuStore();
 
+	const { token } = theme.useToken();
+	
 	const flattenMenuRoutes = (routes: MenuProps["items"]): MenuProps["items"] => {
 		if (!collapsed) return routes;
 
@@ -35,13 +36,16 @@ const Menu: FC = () => {
 	const routes = flattenMenuRoutes(menuRoutes);
 
 	return (
-		<nav className={clsx(styles.menu, collapsed && styles.collapsed)}>
+		<StyledMenu
+			backgroundColor={token.colorBgContainer}
+			collapsed={collapsed}
+		>
 			<UiMenu
 				mode={"inline"}
 				items={routes}
 				onClick={(item) => navigate(item.key)}
 			/>
-		</nav>
+		</StyledMenu>
 	);
 };
 

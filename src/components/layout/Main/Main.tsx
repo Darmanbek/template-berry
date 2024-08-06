@@ -1,11 +1,17 @@
+import { theme } from "antd";
 import { FC, ReactNode } from "react";
-import styles from "./main.module.scss";
+import { StyledMain } from "./main.styles";
 
 const Main: FC<{children: ReactNode}> = ({ children }) => {
+
+	const { token } = theme.useToken();
 	return (
-		<main className={styles.main}>
+		<StyledMain
+			borderRadius={token.borderRadiusLG}
+			backgroundColor={token.colorBgLayout}
+		>
 			{children}
-		</main>
+		</StyledMain>
 	);
 };
 
