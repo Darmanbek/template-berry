@@ -7,15 +7,19 @@ import { Logo } from "src/widgets/logo"
 
 const SidebarContainer: FC<PropsWithChildren> = ({ children }) => {
 	const { md = true } = useResponsive()
-	const { collapsed, open, toggleOpen } = useMenuStore()
+
+	const { collapsed, toggleCollapsed } = useMenuStore()
 
 	if (md)
 		return (
 			<LayoutSider
 				theme={"light"}
-				width={260}
-				collapsedWidth={72}
+				width={260 + 8}
+				collapsedWidth={72 + 8}
 				collapsed={collapsed}
+				style={{
+					position: "relative",
+				}}
 			>
 				{children}
 			</LayoutSider>
@@ -23,16 +27,21 @@ const SidebarContainer: FC<PropsWithChildren> = ({ children }) => {
 
 	return (
 		<Drawer
-			open={open}
-			onClose={toggleOpen}
+			placement={"left"}
+			closable={false}
+			open={collapsed}
+			onClose={toggleCollapsed}
 			title={<Logo />}
+			width={260}
 			styles={{
 				body: {
 					padding: 0,
 					overflow: "hidden",
+					position: "relative",
 				},
 				header: {
 					minHeight: 80,
+					borderBottom: 0,
 				},
 			}}
 		>

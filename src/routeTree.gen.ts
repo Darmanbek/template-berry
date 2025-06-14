@@ -14,6 +14,7 @@ import { Route as AuthLayoutRouteImport } from "./routes/_auth-layout"
 import { Route as LayoutIndexRouteImport } from "./routes/_layout/index"
 import { Route as AuthLayoutLoginRouteImport } from "./routes/_auth-layout/login"
 import { Route as AuthLayoutForgotPasswordRouteImport } from "./routes/_auth-layout/forgot-password"
+import { Route as LayoutDashboardDefaultRouteImport } from "./routes/_layout/dashboard/default"
 
 const LayoutRoute = LayoutRouteImport.update({
   id: "/_layout",
@@ -39,18 +40,25 @@ const AuthLayoutForgotPasswordRoute =
     path: "/forgot-password",
     getParentRoute: () => AuthLayoutRoute,
   } as any)
+const LayoutDashboardDefaultRoute = LayoutDashboardDefaultRouteImport.update({
+  id: "/dashboard/default",
+  path: "/dashboard/default",
+  getParentRoute: () => LayoutRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   "": typeof LayoutRouteWithChildren
   "/forgot-password": typeof AuthLayoutForgotPasswordRoute
   "/login": typeof AuthLayoutLoginRoute
   "/": typeof LayoutIndexRoute
+  "/dashboard/default": typeof LayoutDashboardDefaultRoute
 }
 export interface FileRoutesByTo {
   "": typeof AuthLayoutRouteWithChildren
   "/forgot-password": typeof AuthLayoutForgotPasswordRoute
   "/login": typeof AuthLayoutLoginRoute
   "/": typeof LayoutIndexRoute
+  "/dashboard/default": typeof LayoutDashboardDefaultRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -59,12 +67,13 @@ export interface FileRoutesById {
   "/_auth-layout/forgot-password": typeof AuthLayoutForgotPasswordRoute
   "/_auth-layout/login": typeof AuthLayoutLoginRoute
   "/_layout/": typeof LayoutIndexRoute
+  "/_layout/dashboard/default": typeof LayoutDashboardDefaultRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: "" | "/forgot-password" | "/login" | "/"
+  fullPaths: "" | "/forgot-password" | "/login" | "/" | "/dashboard/default"
   fileRoutesByTo: FileRoutesByTo
-  to: "" | "/forgot-password" | "/login" | "/"
+  to: "" | "/forgot-password" | "/login" | "/" | "/dashboard/default"
   id:
     | "__root__"
     | "/_auth-layout"
@@ -72,6 +81,7 @@ export interface FileRouteTypes {
     | "/_auth-layout/forgot-password"
     | "/_auth-layout/login"
     | "/_layout/"
+    | "/_layout/dashboard/default"
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -116,6 +126,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof AuthLayoutForgotPasswordRouteImport
       parentRoute: typeof AuthLayoutRoute
     }
+    "/_layout/dashboard/default": {
+      id: "/_layout/dashboard/default"
+      path: "/dashboard/default"
+      fullPath: "/dashboard/default"
+      preLoaderRoute: typeof LayoutDashboardDefaultRouteImport
+      parentRoute: typeof LayoutRoute
+    }
   }
 }
 
@@ -135,10 +152,12 @@ const AuthLayoutRouteWithChildren = AuthLayoutRoute._addFileChildren(
 
 interface LayoutRouteChildren {
   LayoutIndexRoute: typeof LayoutIndexRoute
+  LayoutDashboardDefaultRoute: typeof LayoutDashboardDefaultRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutIndexRoute: LayoutIndexRoute,
+  LayoutDashboardDefaultRoute: LayoutDashboardDefaultRoute,
 }
 
 const LayoutRouteWithChildren =

@@ -26,7 +26,6 @@ const Login: FC = () => {
 			setIsLoading(false)
 			notification.success({
 				message: "Success!",
-				placement: "top",
 			})
 			navigate({
 				to: "/",
@@ -88,7 +87,13 @@ const Login: FC = () => {
 				form={form}
 				onFinish={onFinish}
 				size={"large"}
+				variant={"filled"}
 				layout={"vertical"}
+				labelCol={{
+					style: {
+						display: "none",
+					},
+				}}
 				initialValues={{
 					email: "berrydashboard@example.com",
 					password: "12345678",
@@ -98,11 +103,6 @@ const Login: FC = () => {
 				<Form.Item
 					name={"email"}
 					label={"Email Address / Username"}
-					labelCol={{
-						style: {
-							display: "none",
-						},
-					}}
 					rules={[{ type: "email" }, { required: true }]}
 				>
 					<Input placeholder={"Email Address / Username"} />
@@ -110,11 +110,6 @@ const Login: FC = () => {
 				<Form.Item
 					name={"password"}
 					label={"Password"}
-					labelCol={{
-						style: {
-							display: "none",
-						},
-					}}
 					rules={[{ required: true }]}
 				>
 					<Input.Password placeholder={"Password"} />

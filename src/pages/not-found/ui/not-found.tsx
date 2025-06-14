@@ -1,8 +1,8 @@
-import { useNavigate } from "@tanstack/react-router"
+import { type NotFoundRouteProps, useNavigate } from "@tanstack/react-router"
 import { Button, Flex, Result } from "antd"
 import type { FC } from "react"
 
-const NotFound: FC = () => {
+const NotFound: FC<NotFoundRouteProps> = ({ data }) => {
 	const navigate = useNavigate()
 
 	return (
@@ -27,6 +27,7 @@ const NotFound: FC = () => {
 						Back Home
 					</Button>
 				}
+				children={typeof data === "string" ? data : JSON.stringify(data)}
 			/>
 		</Flex>
 	)

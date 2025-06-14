@@ -7,10 +7,8 @@ import { UiSearchInput } from "src/shared/ui"
 import { Logo } from "src/widgets/logo"
 
 const HeaderLeft: FC = () => {
-	const { mobile, xl } = useResponsive()
-	const { toggleCollapsed, toggleOpen } = useMenuStore()
-
-	const toggleMenu = mobile ? toggleOpen : toggleCollapsed
+	const { md = true, xl = true } = useResponsive()
+	const { toggleCollapsed } = useMenuStore()
 
 	return (
 		<Flex
@@ -18,7 +16,7 @@ const HeaderLeft: FC = () => {
 			align={"center"}
 			style={{ flexGrow: 1 }}
 		>
-			{!mobile && (
+			{md && (
 				<div style={{ flexBasis: 260 - 32 }}>
 					<Logo />
 				</div>
@@ -28,12 +26,16 @@ const HeaderLeft: FC = () => {
 					variant={"filled"}
 					color={"purple"}
 					icon={<MenuOutlined />}
-					onClick={toggleMenu}
+					onClick={toggleCollapsed}
 				/>
 			</div>
-			{mobile ? (
+			{!md ? (
 				<div>
-					<Button icon={<SearchOutlined />} />
+					<Button
+						variant={"filled"}
+						color={"purple"}
+						icon={<SearchOutlined />}
+					/>
 				</div>
 			) : (
 				<div

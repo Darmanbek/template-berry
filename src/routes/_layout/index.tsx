@@ -1,9 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router"
+import { HomePage } from "src/pages/home"
 
 export const Route = createFileRoute("/_layout/")({
 	component: RouteComponent,
 })
 
 function RouteComponent() {
-	return <div>Hello "/_layout/"!</div>
+	return (
+		<>
+			<HomePage />
+		</>
+	)
 }

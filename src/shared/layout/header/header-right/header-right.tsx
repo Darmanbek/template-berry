@@ -74,26 +74,36 @@ const HeaderRight: FC = () => {
 					style={{
 						height: 48,
 						alignItems: "center",
-						justifyContent: "space-between",
-						width: 90,
 						paddingInline: 0,
+						gap: 0,
 					}}
 				>
-					<div style={{ marginTop: 8, marginBottom: 8, marginLeft: 8 }}>
+					<Flex
+						style={{ marginTop: 8, marginBottom: 8, marginLeft: 8, flexShrink: 0 }}
+						justify={"center"}
+						align={"center"}
+					>
 						<Avatar
 							alt={"User"}
 							size={34}
 							icon={<UserOutlined />}
 						/>
-					</div>
-					<SettingOutlined
+					</Flex>
+					<div
 						style={{
-							height: 24,
-							fontSize: 20,
 							paddingRight: 12,
-							paddingLeft: 4,
+							paddingLeft: 12,
 						}}
-					/>
+					>
+						<SettingOutlined
+							spin={true}
+							style={{
+								height: 24,
+								fontSize: 20,
+								animationDuration: "3s",
+							}}
+						/>
+					</div>
 				</Button>
 			</Popover>
 		</Flex>
