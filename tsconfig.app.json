@@ -15,10 +15,6 @@
 		/* Bundler mode */
 		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
-		"importsNotUsedAsValues": "preserve",
-		// Важно!
-		"verbatimModuleSyntax": true,
-		// По желанию, строгость в импортах
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"moduleDetection": "force",
