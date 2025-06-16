@@ -14,9 +14,15 @@ const SidebarContainer: FC<PropsWithChildren> = ({ children }) => {
 		return (
 			<LayoutSider
 				theme={"light"}
+				breakpoint={"lg"}
 				width={260 + 8}
 				collapsedWidth={72 + 8}
 				collapsed={collapsed}
+				onBreakpoint={(broken) => {
+					if (broken && !collapsed) {
+						toggleCollapsed()
+					}
+				}}
 				style={{
 					position: "relative",
 				}}
