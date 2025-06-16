@@ -73,13 +73,39 @@ const Default: FC = () => {
 							style={{
 								height: "100%",
 								backgroundColor: el.bgColor,
+								overflow: "hidden",
 							}}
+							variant={"borderless"}
 							styles={{
 								body: {
 									height: "inherit",
+									position: "relative",
 								},
 							}}
 						>
+							<div
+								style={{
+									position: "absolute",
+									top: -125,
+									right: -15,
+									width: 210,
+									height: 210,
+									backgroundColor: el.color,
+									borderRadius: "50%",
+									opacity: 0.5,
+								}}
+							></div>
+							<div
+								style={{
+									position: "absolute",
+									top: -85,
+									right: -95,
+									width: 210,
+									height: 210,
+									backgroundColor: el.color,
+									borderRadius: "50%",
+								}}
+							></div>
 							<Flex
 								vertical={true}
 								justify={"space-between"}
@@ -99,12 +125,6 @@ const Default: FC = () => {
 									</Flex>
 								</Title>
 								<Text style={{ color: el.textColor }}>{el.title}</Text>
-								{/*<Statistic*/}
-								{/*	title={el.title}*/}
-								{/*	prefix={"$"}*/}
-								{/*	suffix={el.suffix}*/}
-								{/*	value={el.value}*/}
-								{/*/>*/}
 							</Flex>
 						</Card>
 					</Col>
@@ -118,15 +138,42 @@ const Default: FC = () => {
 							<Card
 								key={key}
 								size={"small"}
+								variant={"borderless"}
 								style={{
 									backgroundColor: el?.bgColor,
+									overflow: "hidden",
 								}}
 								styles={{
 									body: {
 										padding: token.padding,
+										position: "relative",
 									},
 								}}
 							>
+								<div
+									style={{
+										position: "absolute",
+										top: -160,
+										right: -130,
+										width: 210,
+										height: 210,
+										backgroundColor: el.color,
+										borderRadius: "50%",
+										opacity: 0.2,
+									}}
+								></div>
+								<div
+									style={{
+										position: "absolute",
+										top: -30,
+										right: -180,
+										width: 210,
+										height: 210,
+										backgroundColor: el.color,
+										borderRadius: "50%",
+										opacity: 0.4,
+									}}
+								></div>
 								<Flex align={"center"}>
 									<TagIcon color={el.color}>{el.icon}</TagIcon>
 									<div>
