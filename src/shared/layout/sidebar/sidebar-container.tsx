@@ -25,7 +25,7 @@ const SidebarContainer: FC<PropsWithChildren> = ({ children }) => {
 				}}
 				style={{
 					position: "sticky",
-					height: "calc(100vh - 80px)",
+					height: "calc(100vh - 81px)",
 					top: 80,
 					left: 0,
 					bottom: 0,
