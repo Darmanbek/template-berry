@@ -22,7 +22,7 @@ const grid = {
 	left: "3%",
 	right: "4%",
 	bottom: "10%",
-	top: "4%",
+	top: "10%",
 	containLabel: true,
 }
 
@@ -53,6 +53,13 @@ export const optionData: EChartsOption = {
 	},
 	legend: {
 		bottom: 0,
+		type: "scroll",
+	},
+	toolbox: {
+		show: true,
+		feature: {
+			saveAsImage: {},
+		},
 	},
 	grid,
 	yAxis: {

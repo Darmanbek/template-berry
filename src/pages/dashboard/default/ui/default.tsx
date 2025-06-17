@@ -228,7 +228,7 @@ const Default: FC = () => {
 						</Flex>
 						<EChartsReact
 							option={optionData}
-							style={{ height: "100%" }}
+							style={{ height: "100%", minHeight: 480 }}
 						/>
 					</Card>
 				</Col>

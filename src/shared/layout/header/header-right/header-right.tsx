@@ -17,8 +17,7 @@ import { Profile } from "./profile.tsx"
 
 const HeaderRight: FC = () => {
 	const { mobile } = useResponsive()
-	const [fullScreen, setFullScreen] = useState(false)
-
+	const [fullScreen, setFullScreen] = useState(screenfull.isFullscreen)
 	return (
 		<Flex
 			gap={16}

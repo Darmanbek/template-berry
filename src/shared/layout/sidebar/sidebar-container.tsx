@@ -24,10 +24,21 @@ const SidebarContainer: FC<PropsWithChildren> = ({ children }) => {
 					}
 				}}
 				style={{
-					position: "relative",
+					position: "sticky",
+					height: "calc(100vh - 80px)",
+					top: 80,
+					left: 0,
+					bottom: 0,
 				}}
 			>
-				{children}
+				<div
+					style={{
+						position: "relative",
+						height: "inherit",
+					}}
+				>
+					{children}
+				</div>
 			</LayoutSider>
 		)
 

@@ -17,6 +17,11 @@ const Header: FC = () => {
 				padding: "16px 24px",
 				gap: 16,
 				backgroundColor: token.colorBgContainer,
+				position: "sticky",
+				top: 0,
+				left: 0,
+				right: 0,
+				zIndex: 10,
 			}}
 		>
 			<HeaderLeft />
